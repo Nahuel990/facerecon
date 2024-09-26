@@ -1,0 +1,26 @@
+# Use the official Python image as a base
+FROM python:3.11
+
+# Set working directory
+WORKDIR /app
+
+# Install CMake and OpenCV dependencies
+RUN apt-get update && \
+    apt-get install -y cmake libgl1-mesa-glx && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy requirements.txt for Python dependencies
+COPY requirements.txt ./
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of your application code (if necessary)
+COPY . .
+
+# Expose the port your Flask app runs on (usually 5000)
+EXPOSE 5000
+
+# Command to run the Python script
+CMD ["python", "recon.py"]
