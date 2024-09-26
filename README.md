@@ -10,7 +10,7 @@ This application utilizes a Flask backend for face recognition and a React front
 
 ## Getting Started
 
-# Image Upload
+### Image Upload
 Images should be placed in the `images` folder with the format `name.jpg`.
 To build and run the application, execute the following command:
 
