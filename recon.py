@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS
 
 # Directory containing images
-image_directory = "/facerecon/images"
+image_directory = "./images"
 known_face_encodings = []
 known_face_names = []
 
@@ -25,14 +25,21 @@ for filename in os.listdir(image_directory):
 
 @app.route('/recognize', methods=['POST'])
 def recognize_face():
-    # Get the image from the request
+    # Check if the image is in the request
+    if 'image' not in request.files:
+        return jsonify({"error": "No image file provided"}), 400
+
     file = request.files['image']
-    img = face_recognition.load_image_file(file)
+    if not file:
+        return jsonify({"error": "No image uploaded"}), 400
+
+    # Load the uploaded image file directly from the file-like object
+    img = face_recognition.load_image_file(file.stream)  # Use the stream directly
 
     # Convert to RGB format
     rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-    # Find all face locations and encodings
+    # Find all face locations and encodings in the uploaded image
     face_encodings = face_recognition.face_encodings(rgb_img)
 
     recognized_names = set()  # Use a set to avoid duplicates
@@ -45,5 +52,7 @@ def recognize_face():
 
     return jsonify(list(recognized_names))
 
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)  # Ensure it listens on all interfaces
