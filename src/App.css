@@ -1,0 +1,45 @@
+.app {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .left {
+    width: 50%; /* Left side takes half the width */
+    display: flex;
+    flex-direction: column; /* Stack logo and message vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: flex-start; /* Start at the top */
+    padding: 20px; /* Add some padding */
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    flex: 1; /* Use flex to take available space */
+  }
+  
+  .logo img {
+    max-width: 100%; /* Ensure logo scales */
+    max-height: 100%; /* Ensure logo scales */
+  }
+  
+  .recognized-names {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    flex: 1; /* Use flex to take available space */
+    padding-top: 10px; /* Add padding to move it down slightly */
+  }
+  
+  .right {
+    width: 50%; /* Right side takes half the width */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+  }
+  
+  Webcam {
+    width: 100%; /* Make the webcam take full width */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
