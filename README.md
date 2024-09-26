@@ -7,16 +7,22 @@ This application utilizes a Flask backend for face recognition and a React front
 - **Dynamic Updates**: Displays recognized names or a message if no one is recognized.
 - **User-Friendly Interface**: Simple layout with a live webcam feed and recognition results.
 
+
 ## Getting Started
 
+# Image Upload
+Images should be placed in the `images` folder with the format `name.jpg`.
 To build and run the application, execute the following command:
 
 ```
 docker-compose up --build
 ```
 
-### Image Upload
-Images should be placed in the `images` folder with the format `name.jpg`.
+and check
+
+```
+http://localhost:3000/
+```
 
 ## Limitations
 The face recognition accuracy may not be optimal for Asian individuals due to limitations in the underlying face recognition library.
